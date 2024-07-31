@@ -1,0 +1,31 @@
+{
+  "format": "custom",
+  "id": "category",
+  "label": "Category",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "name": {
+        "type": "Text",
+        "config": {
+          "label": "Name",
+          "placeholder": ""
+        }
+      },
+      "color": {
+        "type": "Color",
+        "config": {
+          "label": "Color",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

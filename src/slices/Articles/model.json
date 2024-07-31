@@ -1,0 +1,38 @@
+{
+  "id": "articles",
+  "type": "SharedSlice",
+  "name": "Articles",
+  "description": "Articles",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "articles": {
+          "type": "Group",
+          "config": {
+            "label": "Articles",
+            "repeat": true,
+            "fields": {
+              "article": {
+                "type": "Link",
+                "config": {
+                  "label": "Article",
+                  "select": "document",
+                  "customtypes": [
+                    "article"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
