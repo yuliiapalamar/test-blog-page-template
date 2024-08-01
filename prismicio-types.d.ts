@@ -433,7 +433,6 @@ export interface ArticlesSliceDefaultPrimaryArticlesItem {
 }
 
 /**
-
  * Item in *Articles → Slider → Primary → Articles*
  */
 export interface ArticlesSliceSliderPrimaryArticlesItem {
@@ -449,7 +448,6 @@ export interface ArticlesSliceSliderPrimaryArticlesItem {
 }
 
 /**
-
  * Item in *Articles → two colums → Primary → Articles*
  */
 export interface ArticlesSliceTwoColumsPrimaryArticlesItem {
@@ -459,6 +457,21 @@ export interface ArticlesSliceTwoColumsPrimaryArticlesItem {
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
    * - **API ID Path**: articles.twoColums.primary.articles[].article
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  article: prismic.ContentRelationshipField<"article">;
+}
+
+/**
+ * Item in *Articles → BigCard → Primary → Articles*
+ */
+export interface ArticlesSliceBigCardPrimaryArticlesItem {
+  /**
+   * Article field in *Articles → BigCard → Primary → Articles*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.bigCard.primary.articles[].article
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   article: prismic.ContentRelationshipField<"article">;
@@ -495,7 +508,6 @@ export type ArticlesSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
-
  * Primary content in *Articles → Slider → Primary*
  */
 export interface ArticlesSliceSliderPrimary {
@@ -513,7 +525,6 @@ export interface ArticlesSliceSliderPrimary {
 }
 
 /**
-
  * Slider variation for Articles Slice
  *
  * - **API ID**: `slider`
@@ -527,7 +538,6 @@ export type ArticlesSliceSlider = prismic.SharedSliceVariation<
 >;
 
 /**
-
  * Primary content in *Articles → two colums → Primary*
  */
 export interface ArticlesSliceTwoColumsPrimary {
@@ -545,7 +555,6 @@ export interface ArticlesSliceTwoColumsPrimary {
 }
 
 /**
-
  * two colums variation for Articles Slice
  *
  * - **API ID**: `twoColums`
@@ -563,14 +572,16 @@ export type ArticlesSliceTwoColums = prismic.SharedSliceVariation<
  */
 export interface ArticlesSliceBigCardPrimary {
   /**
-   * Article field in *Articles → BigCard → Primary*
+   * Articles field in *Articles → BigCard → Primary*
    *
-   * - **Field Type**: Content Relationship
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: articles.bigCard.primary.article
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   * - **API ID Path**: articles.bigCard.primary.articles[]
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  article: prismic.ContentRelationshipField;
+  articles: prismic.GroupField<
+    Simplify<ArticlesSliceBigCardPrimaryArticlesItem>
+  >;
 }
 
 /**
@@ -594,7 +605,6 @@ type ArticlesSliceVariation =
   | ArticlesSliceSlider
   | ArticlesSliceTwoColums
   | ArticlesSliceBigCard;
-
 
 /**
  * Articles Shared Slice
@@ -1197,6 +1207,7 @@ declare module "@prismicio/client" {
       ArticlesSliceSliderPrimary,
       ArticlesSliceTwoColumsPrimaryArticlesItem,
       ArticlesSliceTwoColumsPrimary,
+      ArticlesSliceBigCardPrimaryArticlesItem,
       ArticlesSliceBigCardPrimary,
       ArticlesSliceVariation,
       ArticlesSliceDefault,
