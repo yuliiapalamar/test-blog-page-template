@@ -35,6 +35,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "news_letter": {
+              "type": "SharedSlice"
+            },
             "articles": {
               "type": "SharedSlice"
             },
