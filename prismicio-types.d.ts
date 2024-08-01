@@ -276,6 +276,7 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | NewsLetterSlice
   | ArticlesSlice
   | HeroSlice
   | QuoteSlice
@@ -861,78 +862,78 @@ export type ImageCardsSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *Newsletter → Default → Primary*
+ * Primary content in *NewsLetter → Default → Primary*
  */
-export interface NewsletterSliceDefaultPrimary {
+export interface NewsLetterSliceDefaultPrimary {
   /**
-   * Title field in *Newsletter → Default → Primary*
+   * Title field in *NewsLetter → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: newsletter.default.primary.title
+   * - **API ID Path**: news_letter.default.primary.title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
 
   /**
-   * Description field in *Newsletter → Default → Primary*
+   * Description field in *NewsLetter → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: newsletter.default.primary.description
+   * - **API ID Path**: news_letter.default.primary.description
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   description: prismic.KeyTextField;
 
   /**
-   * Background Image field in *Newsletter → Default → Primary*
+   * Background Image field in *NewsLetter → Default → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: newsletter.default.primary.background_image
+   * - **API ID Path**: news_letter.default.primary.background_image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   background_image: prismic.ImageField<never>;
 
   /**
-   * Button Text field in *Newsletter → Default → Primary*
+   * Button Text field in *NewsLetter → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: newsletter.default.primary.button_text
+   * - **API ID Path**: news_letter.default.primary.button_text
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   button_text: prismic.KeyTextField;
 }
 
 /**
- * Default variation for Newsletter Slice
+ * Default variation for NewsLetter Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type NewsletterSliceDefault = prismic.SharedSliceVariation<
+export type NewsLetterSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<NewsletterSliceDefaultPrimary>,
+  Simplify<NewsLetterSliceDefaultPrimary>,
   never
 >;
 
 /**
- * Slice variation for *Newsletter*
+ * Slice variation for *NewsLetter*
  */
-type NewsletterSliceVariation = NewsletterSliceDefault;
+type NewsLetterSliceVariation = NewsLetterSliceDefault;
 
 /**
- * Newsletter Shared Slice
+ * NewsLetter Shared Slice
  *
- * - **API ID**: `newsletter`
- * - **Description**: Newsletter
+ * - **API ID**: `news_letter`
+ * - **Description**: NewsLetter
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type NewsletterSlice = prismic.SharedSlice<
-  "newsletter",
-  NewsletterSliceVariation
+export type NewsLetterSlice = prismic.SharedSlice<
+  "news_letter",
+  NewsLetterSliceVariation
 >;
 
 /**
@@ -1229,10 +1230,10 @@ declare module "@prismicio/client" {
       ImageCardsSliceDefaultPrimary,
       ImageCardsSliceVariation,
       ImageCardsSliceDefault,
-      NewsletterSlice,
-      NewsletterSliceDefaultPrimary,
-      NewsletterSliceVariation,
-      NewsletterSliceDefault,
+      NewsLetterSlice,
+      NewsLetterSliceDefaultPrimary,
+      NewsLetterSliceVariation,
+      NewsLetterSliceDefault,
       QuoteSlice,
       QuoteSliceDefaultPrimary,
       QuoteSliceVariation,

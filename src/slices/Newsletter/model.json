@@ -1,8 +1,8 @@
 {
-  "id": "newsletter",
+  "id": "news_letter",
   "type": "SharedSlice",
-  "name": "Newsletter",
-  "description": "Newsletter",
+  "name": "NewsLetter",
+  "description": "NewsLetter",
   "variations": [
     {
       "id": "default",

@@ -35,15 +35,18 @@ async function Header() {
   const client = createClient();
   const settings = await client.getSingle("settings");
   const navigation = await client.getSingle("navigation");
+  const categories = await client.getAllByType("category");
+
+  console.log(categories);
 
   return (
     <div>
       <div className="flex flex-wrap flex-row w-full h-full ">
         <PrismicNextLink
           href="/"
-          className="text-lg font-semibold text-white tracking-tight pl-5 lg:pl-60 py-5 pr-5 bg-blue-600"
+          className="text-lg  text-white tracking-tight pl-5 lg:pl-60 py-5 pr-5 bg-blue-600"
         >
-          <PrismicText field={settings.data.siteTitle} />
+          <PrismicRichText field={settings.data.siteTitle} />
         </PrismicNextLink>
         <div className=" flex items-center justify-center bg-slate-100">
           <Search strokeWidth={1.75} color="#8c8787" className=" space-x-reverse h-full self-center mx-4" />
@@ -58,6 +61,16 @@ async function Header() {
                 <PrismicNextLink field={item.link}>
                   <PrismicText field={item.label} />
                 </PrismicNextLink>
+              </li>
+            ))}
+          </ul>
+          <ul className="flex flex-wrap items-center gap-6 md:gap-12">
+            {categories.map((category) => (
+              <li
+                key={category.id}
+                className=" self-center  text-slate-300"
+              >
+                  <p>{category.data.name}</p>
               </li>
             ))}
           </ul>
@@ -88,4 +101,3 @@ async function Footer() {
     </Bounded>
   );
 }
-
