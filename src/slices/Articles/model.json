@@ -33,6 +33,66 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "slider",
+      "name": " Slider",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "articles": {
+          "type": "Group",
+          "config": {
+            "label": "Articles",
+            "repeat": true,
+            "fields": {
+              "article": {
+                "type": "Link",
+                "config": {
+                  "label": "Article",
+                  "select": "document",
+                  "customtypes": [
+                    "article"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "twoColums",
+      "name": "Two Colums",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "articles": {
+          "type": "Group",
+          "config": {
+            "label": "Articles",
+            "repeat": true,
+            "fields": {
+              "article": {
+                "type": "Link",
+                "config": {
+                  "label": "Article",
+                  "select": "document",
+                  "customtypes": [
+                    "article"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

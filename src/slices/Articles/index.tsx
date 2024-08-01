@@ -14,25 +14,25 @@ export type ArticlesProps = SliceComponentProps<Content.ArticlesSlice>;
 const Articles = async ({ slice }: ArticlesProps): Promise<JSX.Element> => {
   const client = createClient();
 
-  const articles = await Promise.all(
-    slice.primary.articles.map(async (item) => {
-      if (isFilled.contentRelationship(item.article) && item.article.uid) {
-        const article = await client.getByUID("article", item.article.uid);
+  // const articles = await Promise.all(
+  //   slice.primary.articles.map(async (item) => {
+  //     if (isFilled.contentRelationship(item.article) && item.article.uid) {
+  //       const article = await client.getByUID("article", item.article.uid);
 
-        if (article && article.data) {
-          const author = isFilled.contentRelationship(article.data.author) && article.data.author.uid
-            ? await client.getByUID("author", article.data.author.uid)
-            : null;
-          const category = isFilled.contentRelationship(article.data.category) && article.data.category.uid
-            ? await client.getByUID("category", article.data.category.uid)
-            : null;
+  //       if (article && article.data) {
+  //         const author = isFilled.contentRelationship(article.data.author) && article.data.author.uid
+  //           ? await client.getByUID("author", article.data.author.uid)
+  //           : null;
+  //         const category = isFilled.contentRelationship(article.data.category) && article.data.category.uid
+  //           ? await client.getByUID("category", article.data.category.uid)
+  //           : null;
 
-          return { article, author, category };
-        }
-      }
-      return null;
-    })
-  );
+  //         return { article, author, category };
+  //       }
+  //     }
+  //     return null;
+  //   })
+  // );
 
   return (
     <section
@@ -40,7 +40,7 @@ const Articles = async ({ slice }: ArticlesProps): Promise<JSX.Element> => {
       data-slice-variation={slice.variation}
       className="grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 p-8"
     >
-      {articles.map((item, index) => item && (
+      {/* {articles.map((item, index) => item && (
         <article key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="relative">
             <PrismicNextImage
@@ -74,7 +74,7 @@ const Articles = async ({ slice }: ArticlesProps): Promise<JSX.Element> => {
             )}
           </div>
         </article>
-      ))}
+      ))} */}
     </section>
   );
 };

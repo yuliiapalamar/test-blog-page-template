@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { asText } from "@prismicio/client";
 import { PrismicText } from "@prismicio/react";
 import { PrismicNextLink, PrismicPreview } from "@prismicio/next";
+import { PrismicRichText } from "@/components/PrismicRichText";
 
 import { createClient, repositoryName } from "@/prismicio";
 import { Bounded } from "@/components/Bounded";
@@ -23,6 +24,7 @@ export default async function RootLayout({
         <Header />
         {children}
         <PrismicPreview repositoryName={repositoryName} />
+        <Footer />
       </body>
     </html>
   );
@@ -60,3 +62,26 @@ async function Header() {
     </Bounded>
   );
 }
+
+async function Footer() {
+  const client = createClient();
+  const footer = await client.getSingle("footer");
+
+  return (
+    <Bounded as="footer" yPadding="lg">
+      <div className="flex flex-col items-center justify-center">
+        <PrismicRichText
+          field={footer.data.text}
+          components={{
+            paragraph: ({ children }) => (
+              <p className="text-center text-[18px] leading-[36px] text-[#a7acbc] font-light font-[Proxima Nova]">
+                {children}
+              </p>
+            ),
+          }}
+        />
+      </div>
+    </Bounded>
+  );
+}
+

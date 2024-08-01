@@ -187,6 +187,38 @@ export type CategoryDocument<Lang extends string = string> =
   >;
 
 /**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * text field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<FooterDocumentData>,
+    "footer",
+    Lang
+  >;
+
+/**
  * Item in *Navigation → Links*
  */
 export interface NavigationDocumentDataLinksItem {
@@ -380,6 +412,7 @@ export type AllDocumentTypes =
   | ArticleDocument
   | AuthorDocument
   | CategoryDocument
+  | FooterDocument
   | NavigationDocument
   | PageDocument
   | SettingsDocument;
@@ -394,6 +427,36 @@ export interface ArticlesSliceDefaultPrimaryArticlesItem {
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
    * - **API ID Path**: articles.default.primary.articles[].article
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  article: prismic.ContentRelationshipField<"article">;
+}
+
+/**
+ * Item in *Articles →  Slider → Primary → Articles*
+ */
+export interface ArticlesSliceSliderPrimaryArticlesItem {
+  /**
+   * Article field in *Articles →  Slider → Primary → Articles*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.slider.primary.articles[].article
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  article: prismic.ContentRelationshipField<"article">;
+}
+
+/**
+ * Item in *Articles → Two Colums → Primary → Articles*
+ */
+export interface ArticlesSliceTwoColumsPrimaryArticlesItem {
+  /**
+   * Article field in *Articles → Two Colums → Primary → Articles*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.twoColums.primary.articles[].article
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   article: prismic.ContentRelationshipField<"article">;
@@ -430,9 +493,72 @@ export type ArticlesSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Articles →  Slider → Primary*
+ */
+export interface ArticlesSliceSliderPrimary {
+  /**
+   * Articles field in *Articles →  Slider → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.slider.primary.articles[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  articles: prismic.GroupField<
+    Simplify<ArticlesSliceSliderPrimaryArticlesItem>
+  >;
+}
+
+/**
+ *  Slider variation for Articles Slice
+ *
+ * - **API ID**: `slider`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArticlesSliceSlider = prismic.SharedSliceVariation<
+  "slider",
+  Simplify<ArticlesSliceSliderPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *Articles → Two Colums → Primary*
+ */
+export interface ArticlesSliceTwoColumsPrimary {
+  /**
+   * Articles field in *Articles → Two Colums → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.twoColums.primary.articles[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  articles: prismic.GroupField<
+    Simplify<ArticlesSliceTwoColumsPrimaryArticlesItem>
+  >;
+}
+
+/**
+ * Two Colums variation for Articles Slice
+ *
+ * - **API ID**: `twoColums`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArticlesSliceTwoColums = prismic.SharedSliceVariation<
+  "twoColums",
+  Simplify<ArticlesSliceTwoColumsPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Articles*
  */
-type ArticlesSliceVariation = ArticlesSliceDefault;
+type ArticlesSliceVariation =
+  | ArticlesSliceDefault
+  | ArticlesSliceSlider
+  | ArticlesSliceTwoColums;
 
 /**
  * Articles Shared Slice
@@ -942,6 +1068,8 @@ declare module "@prismicio/client" {
       AuthorDocumentData,
       CategoryDocument,
       CategoryDocumentData,
+      FooterDocument,
+      FooterDocumentData,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataLinksItem,
@@ -954,8 +1082,14 @@ declare module "@prismicio/client" {
       ArticlesSlice,
       ArticlesSliceDefaultPrimaryArticlesItem,
       ArticlesSliceDefaultPrimary,
+      ArticlesSliceSliderPrimaryArticlesItem,
+      ArticlesSliceSliderPrimary,
+      ArticlesSliceTwoColumsPrimaryArticlesItem,
+      ArticlesSliceTwoColumsPrimary,
       ArticlesSliceVariation,
       ArticlesSliceDefault,
+      ArticlesSliceSlider,
+      ArticlesSliceTwoColums,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
