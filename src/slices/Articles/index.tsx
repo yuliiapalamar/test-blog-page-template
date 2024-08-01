@@ -79,7 +79,7 @@ const Articles = async ({ slice }: ArticlesProps): Promise<JSX.Element> => {
         </Bounded>
       )}
       {slice.variation === "twoColums" && (
-        <Bounded as="section" className="bg-slate-100 items-center">
+        <Bounded as="section" className="bg-slate-50 items-center">
           <div
             className={`grid gap-8 md:grid-cols-2 sm:grid-cols-1 justify-items-center`}
           >

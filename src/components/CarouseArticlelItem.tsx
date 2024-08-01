@@ -10,7 +10,7 @@ type CarouselItemProps = {
 
 const CarouselArticleItem = ({ article, author, category }: CarouselItemProps) => {
   return (
-    <div className="relative w-screen h-[80vh] flex items-center justify-center">
+    <div className="relative w-screen h-[60vh] flex items-center justify-center">
       {/* Image */}
       <Image
         src={article?.data.image?.url}
@@ -29,7 +29,7 @@ const CarouselArticleItem = ({ article, author, category }: CarouselItemProps) =
             <Image 
               src={author?.data.image} 
               alt={author?.data.name} 
-              className="w-32 h-32 z-10 rounded-full border-2 border-white"
+              className="w-12 h-12 lg:w-32 lg:h-32 z-10 rounded-full border-2 border-white"
             />
           </div>
         )}
@@ -39,7 +39,7 @@ const CarouselArticleItem = ({ article, author, category }: CarouselItemProps) =
       </div>
       {category && (
           <span
-            className="absolute bottom-12 left-72 text-white text-xs pl-3 pr-2 py-1"
+            className="absolute bottom-12 left-5 lg:left-72 text-white text-xs pl-3 pr-2 py-1"
             style={{ backgroundColor: category.data.color || "blue" }}
           >
             {category.data.name || "No Category"}
@@ -47,7 +47,7 @@ const CarouselArticleItem = ({ article, author, category }: CarouselItemProps) =
         )}
 
       {/* Author and Date */}
-      <div className="absolute bottom-12 right-72 z-10 text-white text-sm">
+      <div className="absolute bottom-12 right-5 lg:right-72 z-10 text-white text-sm">
         <div className='flex flex-row items-center'>
        <p className="text-gray-300 text-xs self-center ">
             {formatDate(article.data.publish_date || "")}

@@ -19,7 +19,7 @@ const ArticleCardSmall = ({
       <div className="relative">
         <PrismicNextImage
           field={article.data.image}
-          className="w-full max-w-[580px] h-48 object-cover"
+          className="w-full max-w-[580px] h-64 object-cover"
         />
         {category && (
           <span

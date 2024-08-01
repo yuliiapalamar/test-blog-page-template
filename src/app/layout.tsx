@@ -34,11 +34,11 @@ async function Header() {
   const navigation = await client.getSingle("navigation");
 
   return (
-    <Bounded as="header" yPadding="sm">
-      <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 leading-none">
+    <div>
+      <div className="flex flex-wrap justify-between w-full h-full ">
         <PrismicNextLink
           href="/"
-          className="text-xl font-semibold tracking-tight"
+          className="text-3xl font-semibold text-white tracking-tight pl-5 lg:pl-72 py-7 pr-5 bg-blue-600"
         >
           <PrismicText field={settings.data.siteTitle} />
         </PrismicNextLink>
@@ -47,7 +47,7 @@ async function Header() {
             {navigation.data?.links.map((item) => (
               <li
                 key={asText(item.label)}
-                className="font-semibold tracking-tight text-slate-800"
+                className="font-semibold tracking-tight self-center text-slate-800"
               >
                 <PrismicNextLink field={item.link}>
                   <PrismicText field={item.label} />
@@ -57,6 +57,6 @@ async function Header() {
           </ul>
         </nav>
       </div>
-    </Bounded>
+    </div>
   );
 }
