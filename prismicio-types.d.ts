@@ -372,13 +372,13 @@ interface SettingsDocumentData {
   /**
    * Site Title field in *Settings*
    *
-   * - **Field Type**: Title
+   * - **Field Type**: Rich Text
    * - **Placeholder**: Title of the site
    * - **API ID Path**: settings.siteTitle
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  siteTitle: prismic.TitleField;
+  siteTitle: prismic.RichTextField;
 
   /**
    * Link field in *Settings*

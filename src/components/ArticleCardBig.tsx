@@ -10,7 +10,7 @@ type CarouselItemProps = {
 
 const ArticleCardBig = ({ article, author, category }: CarouselItemProps) => {
   return (
-    <div className="relative w-full h-full min-h-80 flex items-center justify-center">
+    <div className="relative w-full h-full min-h-80 flex items-center justify-center cursor-pointer">
       {/* Image */}
       <Image
         src={article?.data.image?.url}
