@@ -553,12 +553,41 @@ export type ArticlesSliceTwoColums = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Articles → BigCard → Primary*
+ */
+export interface ArticlesSliceBigCardPrimary {
+  /**
+   * Article field in *Articles → BigCard → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.bigCard.primary.article
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  article: prismic.ContentRelationshipField;
+}
+
+/**
+ * BigCard variation for Articles Slice
+ *
+ * - **API ID**: `bigCard`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArticlesSliceBigCard = prismic.SharedSliceVariation<
+  "bigCard",
+  Simplify<ArticlesSliceBigCardPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Articles*
  */
 type ArticlesSliceVariation =
   | ArticlesSliceDefault
   | ArticlesSliceSlider
-  | ArticlesSliceTwoColums;
+  | ArticlesSliceTwoColums
+  | ArticlesSliceBigCard;
 
 /**
  * Articles Shared Slice
@@ -812,6 +841,81 @@ type ImageCardsSliceVariation = ImageCardsSliceDefault;
 export type ImageCardsSlice = prismic.SharedSlice<
   "image_cards",
   ImageCardsSliceVariation
+>;
+
+/**
+ * Primary content in *Newsletter → Default → Primary*
+ */
+export interface NewsletterSliceDefaultPrimary {
+  /**
+   * Title field in *Newsletter → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *Newsletter → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Background Image field in *Newsletter → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.default.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Button Text field in *Newsletter → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.default.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Newsletter Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NewsletterSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Newsletter*
+ */
+type NewsletterSliceVariation = NewsletterSliceDefault;
+
+/**
+ * Newsletter Shared Slice
+ *
+ * - **API ID**: `newsletter`
+ * - **Description**: Newsletter
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSlice = prismic.SharedSlice<
+  "newsletter",
+  NewsletterSliceVariation
 >;
 
 /**
@@ -1086,10 +1190,12 @@ declare module "@prismicio/client" {
       ArticlesSliceSliderPrimary,
       ArticlesSliceTwoColumsPrimaryArticlesItem,
       ArticlesSliceTwoColumsPrimary,
+      ArticlesSliceBigCardPrimary,
       ArticlesSliceVariation,
       ArticlesSliceDefault,
       ArticlesSliceSlider,
       ArticlesSliceTwoColums,
+      ArticlesSliceBigCard,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
@@ -1105,6 +1211,10 @@ declare module "@prismicio/client" {
       ImageCardsSliceDefaultPrimary,
       ImageCardsSliceVariation,
       ImageCardsSliceDefault,
+      NewsletterSlice,
+      NewsletterSliceDefaultPrimary,
+      NewsletterSliceVariation,
+      NewsletterSliceDefault,
       QuoteSlice,
       QuoteSliceDefaultPrimary,
       QuoteSliceVariation,

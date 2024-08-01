@@ -93,6 +93,24 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "bigCard",
+      "name": "BigCard",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "article": {
+          "type": "Link",
+          "config": {
+            "label": "Article",
+            "select": "document"
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }
