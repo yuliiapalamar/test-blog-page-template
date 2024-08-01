@@ -97,6 +97,25 @@ const Articles = async ({ slice }: ArticlesProps): Promise<JSX.Element> => {
           </div>
         </Bounded>
       )}
+      {slice.variation === "bigCard" && (
+        <Bounded as="section" className="bg-slate-50 items-center">
+          <div
+            className={`grid gap-8 md:grid-cols-2 sm:grid-cols-1 justify-items-center`}
+          >
+            {articles.map(
+              (item: any, index: number) =>
+                item && (
+                  <ArticleCardSmall
+                    key={index}
+                    article={item.article}
+                    author={item.author}
+                    category={item.category}
+                  />
+                )
+            )}
+          </div>
+        </Bounded>
+      )}
       {slice.variation === "slider" && (
         // <Bounded as="section">
         <Carousel

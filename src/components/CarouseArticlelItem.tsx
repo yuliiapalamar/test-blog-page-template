@@ -10,7 +10,7 @@ type CarouselItemProps = {
 
 const CarouselArticleItem = ({ article, author, category }: CarouselItemProps) => {
   return (
-    <div className="relative w-screen h-[60vh] flex items-center justify-center">
+    <div className="relative w-screen h-[70vh] flex items-center justify-center">
       {/* Image */}
       <Image
         src={article?.data.image?.url}
@@ -33,13 +33,13 @@ const CarouselArticleItem = ({ article, author, category }: CarouselItemProps) =
             />
           </div>
         )}
-        <h3 className="text-xl lg:text-5xl font-semibold mb-4">
+        <h3 className="text-xl lg:text-3xl font-semibold mb-4">
           {article?.data.title}
         </h3>
       </div>
       {category && (
           <span
-            className="absolute bottom-12 left-5 lg:left-72 text-white text-xs pl-3 pr-2 py-1"
+            className="absolute bottom-12 left-5 lg:left-60 text-white text-xs pl-3 pr-2 py-1"
             style={{ backgroundColor: category.data.color || "blue" }}
           >
             {category.data.name || "No Category"}
@@ -47,7 +47,7 @@ const CarouselArticleItem = ({ article, author, category }: CarouselItemProps) =
         )}
 
       {/* Author and Date */}
-      <div className="absolute bottom-12 right-5 lg:right-72 z-10 text-white text-sm">
+      <div className="absolute bottom-12 right-5 lg:right-60 z-10 text-white text-sm">
         <div className='flex flex-row items-center'>
        <p className="text-gray-300 text-xs self-center ">
             {formatDate(article.data.publish_date || "")}

@@ -22,7 +22,7 @@ export function Bounded({
       className={clsx(
         "px-5",
         yPadding === "sm" && "py-8 md:px28",
-        yPadding === "base" && "py-20 lg:px-72",
+        yPadding === "base" && "py-20 lg:px-60",
         yPadding === "lg" && "py-32 md:px-96",
         className,
       )}
