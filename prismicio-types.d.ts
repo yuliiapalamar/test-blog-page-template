@@ -433,11 +433,12 @@ export interface ArticlesSliceDefaultPrimaryArticlesItem {
 }
 
 /**
- * Item in *Articles →  Slider → Primary → Articles*
+
+ * Item in *Articles → Slider → Primary → Articles*
  */
 export interface ArticlesSliceSliderPrimaryArticlesItem {
   /**
-   * Article field in *Articles →  Slider → Primary → Articles*
+   * Article field in *Articles → Slider → Primary → Articles*
    *
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
@@ -448,11 +449,12 @@ export interface ArticlesSliceSliderPrimaryArticlesItem {
 }
 
 /**
- * Item in *Articles → Two Colums → Primary → Articles*
+
+ * Item in *Articles → two colums → Primary → Articles*
  */
 export interface ArticlesSliceTwoColumsPrimaryArticlesItem {
   /**
-   * Article field in *Articles → Two Colums → Primary → Articles*
+   * Article field in *Articles → two colums → Primary → Articles*
    *
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
@@ -493,11 +495,12 @@ export type ArticlesSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *Articles →  Slider → Primary*
+
+ * Primary content in *Articles → Slider → Primary*
  */
 export interface ArticlesSliceSliderPrimary {
   /**
-   * Articles field in *Articles →  Slider → Primary*
+   * Articles field in *Articles → Slider → Primary*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -510,7 +513,8 @@ export interface ArticlesSliceSliderPrimary {
 }
 
 /**
- *  Slider variation for Articles Slice
+
+ * Slider variation for Articles Slice
  *
  * - **API ID**: `slider`
  * - **Description**: Default
@@ -523,11 +527,12 @@ export type ArticlesSliceSlider = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *Articles → Two Colums → Primary*
+
+ * Primary content in *Articles → two colums → Primary*
  */
 export interface ArticlesSliceTwoColumsPrimary {
   /**
-   * Articles field in *Articles → Two Colums → Primary*
+   * Articles field in *Articles → two colums → Primary*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -540,7 +545,8 @@ export interface ArticlesSliceTwoColumsPrimary {
 }
 
 /**
- * Two Colums variation for Articles Slice
+
+ * two colums variation for Articles Slice
  *
  * - **API ID**: `twoColums`
  * - **Description**: Default
@@ -588,6 +594,7 @@ type ArticlesSliceVariation =
   | ArticlesSliceSlider
   | ArticlesSliceTwoColums
   | ArticlesSliceBigCard;
+
 
 /**
  * Articles Shared Slice

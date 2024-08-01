@@ -8,6 +8,7 @@ import { PrismicRichText } from "@/components/PrismicRichText";
 
 import { createClient, repositoryName } from "@/prismicio";
 import { Bounded } from "@/components/Bounded";
+import { Search } from "lucide-react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -36,20 +37,23 @@ async function Header() {
   const navigation = await client.getSingle("navigation");
 
   return (
-    <Bounded as="header" yPadding="sm">
-      <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 leading-none">
+    <div>
+      <div className="flex flex-wrap flex-row w-full h-full ">
         <PrismicNextLink
           href="/"
-          className="text-xl font-semibold tracking-tight"
+          className="text-lg font-semibold text-white tracking-tight pl-5 lg:pl-60 py-5 pr-5 bg-blue-600"
         >
           <PrismicText field={settings.data.siteTitle} />
         </PrismicNextLink>
-        <nav>
-          <ul className="flex flex-wrap gap-6 md:gap-10">
+        <div className=" flex items-center justify-center bg-slate-100">
+          <Search strokeWidth={1.75} color="#8c8787" className=" space-x-reverse h-full self-center mx-4" />
+        </div>
+        <nav className="flex items-center justify-center pl-4">
+          <ul className="flex flex-wrap items-center gap-6 md:gap-12">
             {navigation.data?.links.map((item) => (
               <li
                 key={asText(item.label)}
-                className="font-semibold tracking-tight text-slate-800"
+                className=" self-center  text-slate-300"
               >
                 <PrismicNextLink field={item.link}>
                   <PrismicText field={item.label} />
@@ -59,7 +63,7 @@ async function Header() {
           </ul>
         </nav>
       </div>
-    </Bounded>
+    </div>
   );
 }
 
