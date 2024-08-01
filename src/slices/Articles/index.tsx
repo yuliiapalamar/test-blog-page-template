@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import CarouseArticlelItem from "@/components/CarouseArticlelItem";
 import Autoplay from "embla-carousel-autoplay";
+import ArticleCardBig from "@/components/ArticleCardBig";
 
 /**
  * Props for `Articles`.
@@ -23,6 +24,7 @@ export type ArticlesProps = SliceComponentProps<Content.ArticlesSlice>;
  */
 const Articles = async ({ slice }: ArticlesProps): Promise<JSX.Element> => {
   const client = createClient();
+  console.log(slice);
 
   // Check if slice.primary and slice.primary.articles exist
   if (!slice?.primary?.articles) {
@@ -98,14 +100,14 @@ const Articles = async ({ slice }: ArticlesProps): Promise<JSX.Element> => {
         </Bounded>
       )}
       {slice.variation === "bigCard" && (
-        <Bounded as="section" className="bg-slate-50 items-center">
+        <Bounded as="section" className="items-center">
           <div
-            className={`grid gap-8 md:grid-cols-2 sm:grid-cols-1 justify-items-center`}
+            className={`flex items-center justify-items-center`}
           >
             {articles.map(
               (item: any, index: number) =>
                 item && (
-                  <ArticleCardSmall
+                  <ArticleCardBig
                     key={index}
                     article={item.article}
                     author={item.author}
