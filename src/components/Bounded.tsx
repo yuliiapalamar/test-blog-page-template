@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import clsx from "clsx";
 
 type BoundedProps = {
-  as?: "div" | "section" | "header";
+  as?: "div" | "section" | "header" | "footer";
   yPadding?: "sm" | "base" | "lg";
   collapsible?: boolean;
   className?: string;

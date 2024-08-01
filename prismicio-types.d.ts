@@ -187,6 +187,38 @@ export type CategoryDocument<Lang extends string = string> =
   >;
 
 /**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * text field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<FooterDocumentData>,
+    "footer",
+    Lang
+  >;
+
+/**
  * Item in *Navigation → Links*
  */
 export interface NavigationDocumentDataLinksItem {
@@ -380,6 +412,7 @@ export type AllDocumentTypes =
   | ArticleDocument
   | AuthorDocument
   | CategoryDocument
+  | FooterDocument
   | NavigationDocument
   | PageDocument
   | SettingsDocument;
@@ -400,6 +433,7 @@ export interface ArticlesSliceDefaultPrimaryArticlesItem {
 }
 
 /**
+
  * Item in *Articles → Slider → Primary → Articles*
  */
 export interface ArticlesSliceSliderPrimaryArticlesItem {
@@ -415,6 +449,7 @@ export interface ArticlesSliceSliderPrimaryArticlesItem {
 }
 
 /**
+
  * Item in *Articles → two colums → Primary → Articles*
  */
 export interface ArticlesSliceTwoColumsPrimaryArticlesItem {
@@ -460,6 +495,7 @@ export type ArticlesSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+
  * Primary content in *Articles → Slider → Primary*
  */
 export interface ArticlesSliceSliderPrimary {
@@ -477,6 +513,7 @@ export interface ArticlesSliceSliderPrimary {
 }
 
 /**
+
  * Slider variation for Articles Slice
  *
  * - **API ID**: `slider`
@@ -490,6 +527,7 @@ export type ArticlesSliceSlider = prismic.SharedSliceVariation<
 >;
 
 /**
+
  * Primary content in *Articles → two colums → Primary*
  */
 export interface ArticlesSliceTwoColumsPrimary {
@@ -507,6 +545,7 @@ export interface ArticlesSliceTwoColumsPrimary {
 }
 
 /**
+
  * two colums variation for Articles Slice
  *
  * - **API ID**: `twoColums`
@@ -520,12 +559,42 @@ export type ArticlesSliceTwoColums = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Articles → BigCard → Primary*
+ */
+export interface ArticlesSliceBigCardPrimary {
+  /**
+   * Article field in *Articles → BigCard → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.bigCard.primary.article
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  article: prismic.ContentRelationshipField;
+}
+
+/**
+ * BigCard variation for Articles Slice
+ *
+ * - **API ID**: `bigCard`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArticlesSliceBigCard = prismic.SharedSliceVariation<
+  "bigCard",
+  Simplify<ArticlesSliceBigCardPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Articles*
  */
 type ArticlesSliceVariation =
   | ArticlesSliceDefault
   | ArticlesSliceSlider
-  | ArticlesSliceTwoColums;
+  | ArticlesSliceTwoColums
+  | ArticlesSliceBigCard;
+
 
 /**
  * Articles Shared Slice
@@ -782,6 +851,81 @@ export type ImageCardsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Newsletter → Default → Primary*
+ */
+export interface NewsletterSliceDefaultPrimary {
+  /**
+   * Title field in *Newsletter → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *Newsletter → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Background Image field in *Newsletter → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.default.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Button Text field in *Newsletter → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.default.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Newsletter Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NewsletterSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Newsletter*
+ */
+type NewsletterSliceVariation = NewsletterSliceDefault;
+
+/**
+ * Newsletter Shared Slice
+ *
+ * - **API ID**: `newsletter`
+ * - **Description**: Newsletter
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSlice = prismic.SharedSlice<
+  "newsletter",
+  NewsletterSliceVariation
+>;
+
+/**
  * Primary content in *Quote → Default → Primary*
  */
 export interface QuoteSliceDefaultPrimary {
@@ -1035,6 +1179,8 @@ declare module "@prismicio/client" {
       AuthorDocumentData,
       CategoryDocument,
       CategoryDocumentData,
+      FooterDocument,
+      FooterDocumentData,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataLinksItem,
@@ -1051,10 +1197,12 @@ declare module "@prismicio/client" {
       ArticlesSliceSliderPrimary,
       ArticlesSliceTwoColumsPrimaryArticlesItem,
       ArticlesSliceTwoColumsPrimary,
+      ArticlesSliceBigCardPrimary,
       ArticlesSliceVariation,
       ArticlesSliceDefault,
       ArticlesSliceSlider,
       ArticlesSliceTwoColums,
+      ArticlesSliceBigCard,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
@@ -1070,6 +1218,10 @@ declare module "@prismicio/client" {
       ImageCardsSliceDefaultPrimary,
       ImageCardsSliceVariation,
       ImageCardsSliceDefault,
+      NewsletterSlice,
+      NewsletterSliceDefaultPrimary,
+      NewsletterSliceVariation,
+      NewsletterSliceDefault,
       QuoteSlice,
       QuoteSliceDefaultPrimary,
       QuoteSliceVariation,
