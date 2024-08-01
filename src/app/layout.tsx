@@ -56,7 +56,7 @@ async function Header() {
             {navigation.data?.links.map((item) => (
               <li
                 key={asText(item.label)}
-                className=" self-center  text-slate-300"
+                className=" self-center  text-slate-400"
               >
                 <PrismicNextLink field={item.link}>
                   <PrismicText field={item.label} />

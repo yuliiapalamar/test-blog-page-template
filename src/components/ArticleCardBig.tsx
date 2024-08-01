@@ -8,41 +8,34 @@ type CarouselItemProps = {
     category: any;
 }
 
-const CarouselArticleItem = ({ article, author, category }: CarouselItemProps) => {
-  
+const ArticleCardBig = ({ article, author, category }: CarouselItemProps) => {
   return (
-    <div className="relative w-screen h-[70vh] flex items-center justify-center cursor-pointer">
+    <div className="relative w-full h-full min-h-80 flex items-center justify-center cursor-pointer">
       {/* Image */}
       <Image
         src={article?.data.image?.url}
         alt={article?.data.image?.alt}
         layout="fill"
-        className="object-cover"
+        className="object-cover  transition-shadow duration-300 ease-in-out hover:shadow-sm focus:shadow-lg"
       />
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       {/* Content */}
-      <div className="relative z-10 text-white text-center p-6 max-w-3xl">
-        {author && (
-          <div className="flex justify-center mb-4">
-            <Image 
-              src={author?.data.image.url} 
-              alt={author?.data.name} 
-              width={author?.data.image.dimensions.width} // specify the width
-              height={author?.data.image.dimensions.height}
-              className="w-12 h-12 lg:w-32 lg:h-32 z-10 rounded-full border-2 border-white"
-            />
-          </div>
-        )}
-        <h3 className="text-xl lg:text-3xl  mb-4">
+      <div className="relative z-10 text-white text-center mt-20 p-6 max-w-2xl">
+    
+        
+        <h3 className="text-md lg:text-xl mb-4">
           {article?.data.title}
-        </h3>
-      </div>
+              </h3>
+              <p className="text-xs lg:text-sm mb-4">
+                  {article?.data.description}
+                </p>
+          </div>
       {category && (
           <span
-            className="absolute bottom-12 left-5 lg:left-60 text-white text-xs pl-3 pr-2 py-1"
+            className="absolute bottom-11 left-0 text-white text-xs pl-3 pr-2 py-1"
             style={{ backgroundColor: category.data.color || "blue" }}
           >
             {category.data.name || "No Category"}
@@ -50,7 +43,7 @@ const CarouselArticleItem = ({ article, author, category }: CarouselItemProps) =
         )}
 
       {/* Author and Date */}
-      <div className="absolute bottom-12 right-5 lg:right-60 z-10 text-white text-sm">
+      <div className="absolute bottom-12 right-5 z-10 text-white text-sm">
         <div className='flex flex-row items-center'>
        <p className="text-gray-300 text-xs self-center ">
             {formatDate(article.data.publish_date || "")}
@@ -67,4 +60,4 @@ const CarouselArticleItem = ({ article, author, category }: CarouselItemProps) =
   )
 }
 
-export default CarouselArticleItem
+export default ArticleCardBig

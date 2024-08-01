@@ -15,11 +15,11 @@ const ArticleCardSmall = ({
   category,
 }: ArticleCardSmallProps) => {
   return (
-    <article className=" overflow-hidden w-full max-w-[370px] lg:max-w-[580px] transition-shadow duration-300 ease-in-out hover:shadow-sm focus:shadow-lg">
+    <article className=" overflow-hidden w-full max-w-[370px] lg:max-w-[580px] transition-shadow duration-300 ease-in-out hover:shadow-sm cursor-pointer focus:shadow-lg">
       <div className="relative">
         <PrismicNextImage
           field={article.data.image}
-          className="w-full max-w-[580px] h-64 object-cover"
+          className="w-full max-w-[580px] h-56 object-cover"
         />
         {category && (
           <span
@@ -31,7 +31,7 @@ const ArticleCardSmall = ({
         )}
       </div>
       <div className="p-6 pl-0 flex flex-col justify-start items-start">
-        <h3 className="text-base lg:text-xl font-semibold text-wrap mb-2">
+        <h3 className="text-base lg:text-xl  text-wrap mb-2">
           {article.data.title || "No Title"}
         </h3>
         <div className="flex flex-row ">
