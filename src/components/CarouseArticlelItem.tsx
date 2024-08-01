@@ -9,6 +9,7 @@ type CarouselItemProps = {
 }
 
 const CarouselArticleItem = ({ article, author, category }: CarouselItemProps) => {
+  
   return (
     <div className="relative w-screen h-[70vh] flex items-center justify-center">
       {/* Image */}
@@ -27,8 +28,10 @@ const CarouselArticleItem = ({ article, author, category }: CarouselItemProps) =
         {author && (
           <div className="flex justify-center mb-4">
             <Image 
-              src={author?.data.image} 
+              src={author?.data.image.url} 
               alt={author?.data.name} 
+              width={author?.data.image.dimensions.width} // specify the width
+              height={author?.data.image.dimensions.height}
               className="w-12 h-12 lg:w-32 lg:h-32 z-10 rounded-full border-2 border-white"
             />
           </div>
