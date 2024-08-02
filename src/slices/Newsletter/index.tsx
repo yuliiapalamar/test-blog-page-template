@@ -13,7 +13,7 @@ export type NewsLetterProps = SliceComponentProps<Content.NewsLetterSlice>;
  * Component for "NewsLetter" Slices.
  */
 const NewsLetter = ({ slice }: NewsLetterProps): JSX.Element => {
-  
+
   return (
     <section
       data-slice-type={slice.slice_type}

@@ -24,7 +24,7 @@ export type ArticlesProps = SliceComponentProps<Content.ArticlesSlice>;
  */
 const Articles = async ({ slice }: ArticlesProps): Promise<JSX.Element> => {
   const client = createClient();
-  console.log(slice);
+  //console.log(slice);
 
   // Check if slice.primary and slice.primary.articles exist
   if (!slice?.primary?.articles) {
@@ -35,7 +35,7 @@ const Articles = async ({ slice }: ArticlesProps): Promise<JSX.Element> => {
   const articles = await Promise.all(
     slice.primary.articles.map(async (item: any) => {
       if (isFilled.contentRelationship(item.article) && item.article.uid) {
-        const article = await client.getByUID("article", item.article.uid);
+        const article = await client.getByUID("article_post", item.article.uid);
 
         if (article && article.data) {
           const author =
@@ -55,6 +55,10 @@ const Articles = async ({ slice }: ArticlesProps): Promise<JSX.Element> => {
       return null;
     })
   );
+  articles.map((item: any) => {
+    console.log('item ', item);
+  });
+  // console.log('articles ',articles);
 
   return (
     <section
@@ -71,9 +75,7 @@ const Articles = async ({ slice }: ArticlesProps): Promise<JSX.Element> => {
                 item && (
                   <ArticleCardSmall
                     key={index}
-                    article={item.article}
-                    author={item.author}
-                    category={item.category}
+                    article={item}
                   />
                 )
             )}
@@ -90,9 +92,7 @@ const Articles = async ({ slice }: ArticlesProps): Promise<JSX.Element> => {
                 item && (
                   <ArticleCardSmall
                     key={index}
-                    article={item.article}
-                    author={item.author}
-                    category={item.category}
+                    article={item}
                   />
                 )
             )}
@@ -109,9 +109,7 @@ const Articles = async ({ slice }: ArticlesProps): Promise<JSX.Element> => {
                 item && (
                   <ArticleCardBig
                     key={index}
-                    article={item.article}
-                    author={item.author}
-                    category={item.category}
+                    article={item}
                   />
                 )
             )}
@@ -131,9 +129,7 @@ const Articles = async ({ slice }: ArticlesProps): Promise<JSX.Element> => {
                 item && (
                   <CarouselItem key={index}>
                     <CarouseArticlelItem
-                      article={item.article}
-                      author={item.author}
-                      category={item.category}
+                      article={item}
                     />
                   </CarouselItem>
                 )
