@@ -38,13 +38,14 @@ export const Navbar = ({ settings, navigation, categories }: NavbarProps) => {
             <PrismicRichText field={settings.data.siteTitle} />
           </PrismicNextLink>
           <div className="flex items-center h-full justify-center cursor-pointer bg-slate-100">
+
             <Search
               strokeWidth={1.75}
               color="#8c8787"
               className="space-x-reverse h-full self-center mx-4"
             />
           </div>
-          <ul className="flex text-xs lg:text-sm items-center gap-3 md:gap-5">
+          <ul className="flex text-xs lg:text-sm items-center gap-3 md:gap-5 ml-3">
             {navigation.data?.links.map((item) => (
               <li
                 key={asText(item.label)}
