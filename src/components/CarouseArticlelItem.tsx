@@ -33,7 +33,7 @@ const CarouselArticleItem = ({ article, author, category }: CarouselItemProps) =
               width={author?.data.image.dimensions.width} // specify the width
               height={author?.data.image.dimensions.height}
               layout='cover'
-              className="w-12 h-12 lg:w-32 lg:h-32 z-10 rounded-full border-2 border-white"
+              className="w-12 h-12 lg:w-32 lg:h-32 z-10 rounded-full border-2 border-white object-cover"
             />
           </div>
         )}
@@ -52,7 +52,7 @@ const CarouselArticleItem = ({ article, author, category }: CarouselItemProps) =
 
       {/* Author and Date */}
       <div className="absolute bottom-12 right-5 lg:right-52 z-10 text-white text-sm">
-        <div className='flex flex-row items-center'>
+        <div className='flex flex-row'>
        <p className="text-gray-300 text-xs self-center ">
             {formatDate(article.data.publish_date || "")}
           </p>

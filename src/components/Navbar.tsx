@@ -80,14 +80,14 @@ export const Navbar = ({ settings, navigation, categories }: NavbarProps) => {
         </nav>
       </div>
       {menuOpen && (
-        <div className="absolute z-10 mt-2 bg-white shadow-lg rounded-lg w-full lg:hidden">
-          <ul className="flex flex-col text-sm items-center text-slate-700">
+        <div className="absolute z-10 mt-2  shadow-lg rounded-lg w-full lg:hidden">
+          <ul className="flex flex-col text-sm items-center ">
             {categories.map((category) => (
               <li
                 key={category.id}
-                className={` cursor-pointer hover:bg-blue-500 hover:text-white transition duration-300 p-2 w-full text-center ${
+                className={` cursor-pointer hover:bg-blue-500 text-slate-700 transition duration-300 p-2 w-full text-center ${
                   selectedCategory === category.id
-                    ? "border-l-4 border-blue-500"
+                    ? "border-l-4 border-blue-500 bg-blue-500 text-blue-500"
                     : ""
                 }`}
                 onClick={() => handleCategoryClick(category.id)}
