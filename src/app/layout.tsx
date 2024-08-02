@@ -1,14 +1,11 @@
 import "./globals.css";
 
 import { Inter } from "next/font/google";
-import { asText } from "@prismicio/client";
-import { PrismicText } from "@prismicio/react";
-import { PrismicNextLink, PrismicPreview } from "@prismicio/next";
+import { PrismicPreview } from "@prismicio/next";
 import { PrismicRichText } from "@/components/PrismicRichText";
 
 import { createClient, repositoryName } from "@/prismicio";
 import { Bounded } from "@/components/Bounded";
-import { Search } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 
 const inter = Inter({
@@ -38,7 +35,7 @@ async function Header() {
   const navigation = await client.getSingle("navigation");
   const categories = await client.getAllByType("category");
 
-  console.log(categories);
+  //console.log(categories);
 
   return (
     <Navbar settings={settings} navigation={navigation} categories={categories} />

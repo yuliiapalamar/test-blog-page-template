@@ -24,7 +24,7 @@
                   "label": "Article",
                   "select": "document",
                   "customtypes": [
-                    "article"
+                    "article_post"
                   ]
                 }
               }
@@ -54,7 +54,7 @@
                   "label": "Article",
                   "select": "document",
                   "customtypes": [
-                    "article"
+                    "article_post"
                   ]
                 }
               }
@@ -84,7 +84,7 @@
                   "label": "Article",
                   "select": "document",
                   "customtypes": [
-                    "article"
+                    "article_post"
                   ]
                 }
               }
@@ -114,7 +114,7 @@
                   "label": "Article",
                   "select": "document",
                   "customtypes": [
-                    "article"
+                    "article_post"
                   ]
                 }
               }

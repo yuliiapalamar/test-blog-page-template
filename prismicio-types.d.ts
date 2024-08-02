@@ -77,7 +77,18 @@ interface ArticleDocumentData {
   category: prismic.ContentRelationshipField<"category">;
 
   /**
-   * `slices` field in *Article*
+   * link field in *Article*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article.link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Slice Zone field in *Article*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -101,6 +112,137 @@ export type ArticleDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<
     Simplify<ArticleDocumentData>,
     "article",
+    Lang
+  >;
+
+type ArticlePostDocumentDataSlicesSlice = TextSlice;
+
+/**
+ * Content for Article Post documents
+ */
+interface ArticlePostDocumentData {
+  /**
+   * Description field in *Article Post*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_post.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Publication Date field in *Article Post*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_post.publication_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  publication_date: prismic.DateField;
+
+  /**
+   * Image field in *Article Post*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_post.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Author field in *Article Post*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_post.author
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  author: prismic.ContentRelationshipField;
+
+  /**
+   * Category field in *Article Post*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_post.category
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  category: prismic.ContentRelationshipField;
+
+  /**
+   * Title field in *Article Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_post.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Article Post*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_post.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ArticlePostDocumentDataSlicesSlice> /**
+   * Meta Title field in *Article Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: article_post.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Article Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: article_post.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Article Post*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_post.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Article Post document from Prismic
+ *
+ * - **API ID**: `article_post`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ArticlePostDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ArticlePostDocumentData>,
+    "article_post",
     Lang
   >;
 
@@ -411,6 +553,7 @@ export type SettingsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | ArticleDocument
+  | ArticlePostDocument
   | AuthorDocument
   | CategoryDocument
   | FooterDocument
@@ -430,7 +573,7 @@ export interface ArticlesSliceDefaultPrimaryArticlesItem {
    * - **API ID Path**: articles.default.primary.articles[].article
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  article: prismic.ContentRelationshipField<"article">;
+  article: prismic.ContentRelationshipField<"article_post">;
 }
 
 /**
@@ -445,7 +588,7 @@ export interface ArticlesSliceSliderPrimaryArticlesItem {
    * - **API ID Path**: articles.slider.primary.articles[].article
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  article: prismic.ContentRelationshipField<"article">;
+  article: prismic.ContentRelationshipField<"article_post">;
 }
 
 /**
@@ -460,7 +603,7 @@ export interface ArticlesSliceTwoColumsPrimaryArticlesItem {
    * - **API ID Path**: articles.twoColums.primary.articles[].article
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  article: prismic.ContentRelationshipField<"article">;
+  article: prismic.ContentRelationshipField<"article_post">;
 }
 
 /**
@@ -475,7 +618,7 @@ export interface ArticlesSliceBigCardPrimaryArticlesItem {
    * - **API ID Path**: articles.bigCard.primary.articles[].article
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  article: prismic.ContentRelationshipField<"article">;
+  article: prismic.ContentRelationshipField<"article_post">;
 }
 
 /**
@@ -1186,6 +1329,9 @@ declare module "@prismicio/client" {
       ArticleDocument,
       ArticleDocumentData,
       ArticleDocumentDataSlicesSlice,
+      ArticlePostDocument,
+      ArticlePostDocumentData,
+      ArticlePostDocumentDataSlicesSlice,
       AuthorDocument,
       AuthorDocumentData,
       CategoryDocument,

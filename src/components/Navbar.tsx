@@ -37,7 +37,7 @@ export const Navbar = ({ settings, navigation, categories }: NavbarProps) => {
           >
             <PrismicRichText field={settings.data.siteTitle} />
           </PrismicNextLink>
-          <div className="flex items-center justify-center cursor-pointer bg-slate-100">
+          <div className="flex items-center h-full justify-center cursor-pointer bg-slate-100">
             <Search
               strokeWidth={1.75}
               color="#8c8787"
@@ -80,14 +80,14 @@ export const Navbar = ({ settings, navigation, categories }: NavbarProps) => {
         </nav>
       </div>
       {menuOpen && (
-        <div className="absolute z-10 mt-2  shadow-lg rounded-lg w-full lg:hidden">
+        <div className="absolute z-10  shadow-lg rounded-lg w-full lg:hidden">
           <ul className="flex flex-col text-sm items-center ">
             {categories.map((category) => (
               <li
                 key={category.id}
-                className={` cursor-pointer hover:bg-blue-500 text-slate-700 transition duration-300 p-2 w-full text-center ${
+                className={` cursor-pointer  bg-white text-base transition duration-300 p-2 w-full text-center ${
                   selectedCategory === category.id
-                    ? "border-l-4 border-blue-500 bg-blue-500 text-blue-500"
+                    ? "border-x-4 border-blue-500 bg-white text-blue-500"
                     : ""
                 }`}
                 onClick={() => handleCategoryClick(category.id)}
