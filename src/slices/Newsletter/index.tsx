@@ -22,7 +22,7 @@ const NewsLetter = ({ slice }: NewsLetterProps): JSX.Element => {
       style={{ backgroundImage: `url(${slice.primary.background_image.url})` }}
     >
       <div className="inset-0 bg-blue-600 opacity-50"></div>
-      <div className="relative z-10 text-center">
+      <div className="flex flex-col items-center z-10 text-center">
         <h2 className="text-4xl font-bold mb-4">
           {slice.primary.title}
         </h2>

@@ -53,7 +53,7 @@ async function Footer() {
           field={footer.data.text}
           components={{
             paragraph: ({ children }) => (
-              <p className="text-center text-[18px] leading-[36px] text-[#a7acbc] font-light font-[Proxima Nova]">
+              <p className="text-center text-[18px] leading-[36px] text-gray-400 font-light ">
                 {children}
               </p>
             ),

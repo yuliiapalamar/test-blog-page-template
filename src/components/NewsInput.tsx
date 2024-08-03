@@ -13,7 +13,7 @@ const NewsInput = ({ buttonText }: NewsInputProps): JSX.Element => {
   };
 
   return (
-    <div className="flex self-center items-center w-fit justify-center bg-[#2C6CFF] rounded-full mx-4 my-2 ">
+    <div className="flex self-center items-center w-fit justify-center bg-blue-600 rounded-full mx-4 my-2 ">
         <input
             type="email"
             placeholder=""

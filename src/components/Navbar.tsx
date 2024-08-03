@@ -59,11 +59,11 @@ export const Navbar = ({ settings, navigation, categories }: NavbarProps) => {
           </ul>
         </div>
         <nav className="flex items-center justify-center pl-1 pr-5 lg:pr-[14vw]">
-          <ul className={`flex items-center text-sm h-full text-slate-400 gap-5`}>
+          <ul className={`flex items-center text-sm h-full gap-5  text-slate-700`}>
             {categories.map((category) => (
               <li
                 key={category.id}
-                    className={` hidden lg:flex self-center cursor-pointer h-full  items-center justify-center text-slate-700 hover:text-blue-500 transition duration-300 
+                    className={` hidden lg:flex self-center cursor-pointer h-full  items-center justify-center hover:text-blue-500 transition duration-300 
                     ${
                   selectedCategory === category.id
                     ? "border-b-2 border-blue-500 text-blue-500"
